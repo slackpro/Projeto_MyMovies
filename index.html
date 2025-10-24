@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de filmes para assistir</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h2><i class="bi bi-film"></i>MyMovies</h2>
+      <section id="search-container">
+        <div class="grupo_busca" id="grupo_busca-nome">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" placeholder="Digite o nome do filme" />
+        </div>
+        <div class="grupo_busca" id="grupo_busca-ano">
+          <label for="ano">Ano:</label>
+          <input type="number" id="ano" placeholder="Digite o ano do filme" />
+        </div>
+        <button id="search-button"><i class="bi bi-search"></i></button>
+      </section>
+    </header>
+    <main>
+      <h2>Comece aora a sua lista de filmes!</h2>
+      <section id="movie-list"></section>
+    </main>
+  </body>
+</html>
