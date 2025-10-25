@@ -1,3 +1,11 @@
+:root {
+  --primary-color: #023047;
+  --light-primar-color: #219ebc;
+  --ligthest-color: #8ecae6;
+  --secundary-color: #fb8500;
+  --light-secundary-color: #ffb703;
+}
+
 #modal-overlay {
   display: flex;
   position: fixed;
@@ -9,6 +17,54 @@
   align-items: center;
 }
 
-#model-background {
+#modal-background {
   background-color: var(--light-primar-color);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+#modal-container {
+  z-index: 1;
+  background-color: var(--ligthest-color);
+  padding: 1rem 3rem;
+  border-radius: 10px;
+}
+
+#movie-title {
+  padding: 1rem 0 1rem 0;
+}
+
+#modal-body {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+#movie-poster {
+  border-radius: 10px;
+}
+
+#movie-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 300px;
+}
+
+#add-to-list {
+  border: 3px solid var(--primary-color);
+  padding: 0.3rem 0;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px #000;
+}
+
+#add-to-list:hover, add-to-list:focus {
+  background-color: var(--primary-color);
+  color: var(--ligthest-color);
+  cursor: pointer;
 }
