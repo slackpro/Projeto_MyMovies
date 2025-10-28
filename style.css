@@ -55,7 +55,7 @@ header h2 i {
 }
 
 #search-button {
-  width: 5%;
+  width: 20px;
   all: unset;
   padding: 0.3rem;
   border: 2px solid var(--ligthest-color);
@@ -97,4 +97,42 @@ main {
   padding: 2rem 0;
   background-color: var(--ligthest-color);
   color: var(--primary-color);
+}
+
+#movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 2rem;
+}
+
+#movie-list article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#movie-list article img {
+  max-width: 15rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.remove-button {
+  border: 3px solid var(--primary-color);
+  padding: 0.3rem 0;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px #000;
+  color: var(--primary-color);
+}
+
+.remove-button:hover,
+.remove-button:focus {
+  background-color: var(--primary-color);
+  color: var(--ligthest-color);
+  cursor: pointer;
 }

@@ -10,6 +10,7 @@
     />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="modal.css" />
+    <link rel="stylesheet" href="src/notie-master/dist/notie.min.css" />
   </head>
   <body>
     <header>
@@ -21,21 +22,23 @@
         </div>
         <div class="grupo_busca" id="grupo_busca-ano">
           <label for="ano">Ano:</label>
-          <input type="number" id="ano" placeholder="Digite o ano do filme" />
+          <input type="text" id="ano" placeholder="Digite o ano do filme" />
         </div>
         <button id="search-button"><i class="bi bi-search"></i></button>
       </section>
     </header>
     <main>
-      <h2>Comece aora a sua lista de filmes!</h2>
+      <h2>Comece agora a sua lista de filmes!</h2>
       <section id="movie-list"></section>
-      <article id="modal-overlay">
-        <section id="modal-background">
-          <section id="modal-content">
-            <h2>Título do Filme</h2>
-          </section>
+      <article id="modal-overlay" class="overlay">
+        <section id="modal-background"></section>
+        <section id="modal-container"></section>
         </section>
       </article>
     </main>
+    <script src="key.js"></script>
+    <script src="script.js"></script>
+    <script src="modal.js"></script>
+    <script src="src/notie-master/dist/notie.min.js"></script>
   </body>
 </html>
