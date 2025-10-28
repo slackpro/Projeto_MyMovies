@@ -2,6 +2,10 @@ const overlay = document.getElementById('modal-overlay');
 const searchButton = document.getElementById('search-button');
 const movieTitleInput = document.getElementById('nome');
 const movieYearInput = document.getElementById('ano');
+const movieListContainer = document.getElementById('movie-list');
+
+// let movieList = [];
+let movieList = JSON.parse(localStorage.getItem('movieList')) ?? [];
 
 async function searchButtonClickHandler() {
   try {
@@ -17,13 +21,6 @@ async function searchButtonClickHandler() {
   } catch (error) {
     notie.alert({ type: 'error', text: error.message });
   }
-
-  // document.getElementById('modal-movie-title').textContent = data.Title || 'Título não encontrado';
-  // document.getElementById('modal-movie-year').textContent = data.Year || 'Ano não encontrado';
-  // document.getElementById('modal-movie-genre').textContent = data.Genre || 'Gênero não encontrado';
-  // document.getElementById('modal-movie-director').textContent = data.Director || 'Diretor não encontrado';
-  // document.getElementById('modal-movie-plot').textContent = data.Plot || 'Sinopse não encontrada';
-  // document.getElementById('modal-movie-poster').src = data.Poster !== 'N/A' ? data.Poster : 'placeholder.jpg';
 }
 
 function movieNameParameterGenerator() {
@@ -44,6 +41,49 @@ function movieYearParameterGenerator() {
     throw new Error('O ano do filme deve ser um número válido com 4 dígitos');
   }
   return `&y=${movieYearInput.value}`;
+}
+
+function addToList(movieObject) {
+  movieList.push(movieObject);
+}
+
+function isMovieAlreadyOnList(id) {
+  function doesThisIdBelongsToThisMovie(movieObject) {
+    return movieObject.imdbID === id;
+  }
+  return Boolean(movieList.find(doesThisIdBelongsToThisMovie));
+}
+
+function updateUI(movieObject) {
+  movieListContainer.innerHTML += `
+    <article id="movie-card-${movieObject.imdbID}">
+          <img src="${movieObject.Poster}" 
+          alt="Poster de ${movieObject.Title}."
+          />
+          <button class="remove-button" onclick="{removeFilmFromList('${movieObject.imdbID}')}">
+          <i class="bi bi-trash3"></i> Remover</button>
+        </article>`;
+}
+
+function removeFilmFromList(id) {
+  notie.confirm({
+    text: 'Deseja remover o filme de sua lista?',
+    submitText: 'Sim',
+    cancelText: 'Não',
+    submitCallback: function removeMovie() {
+      movieList = movieList.filter((movie) => movie.imdbID !== id);
+      document.getElementById(`movie-card-${id}`).remove();
+      upateLocalStorage();
+    },
+  });
+}
+
+function upateLocalStorage() {
+  localStorage.setItem('movieList', JSON.stringify(movieList));
+}
+
+for (const movieInfo of movieList) {
+  updateUI(movieInfo);
 }
 
 searchButton.addEventListener('click', searchButtonClickHandler);
